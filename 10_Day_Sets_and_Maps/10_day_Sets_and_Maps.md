@@ -224,11 +224,11 @@ To find a union to two sets can be achieved using spread operator. Lets find the
 ```js
 let a = [1, 2, 3, 4, 5]
 let b = [3, 4, 5, 6]
-let c = [...a, ...b]
+let c = [...a, ...b]  
 
 let A = new Set(a)
 let B = new Set(b)
-let C = new Set(c)
+let C = new Set(c) //A.union(B)
 
 console.log(C)
 ```
@@ -248,7 +248,7 @@ let b = [3, 4, 5, 6]
 let A = new Set(a)
 let B = new Set(b)
 
-let c = a.filter((num) => B.has(num))
+let c = a.filter((num) => B.has(num))  //A.intersection(B) 
 let C = new Set(c)
 
 console.log(C)
@@ -269,7 +269,7 @@ let b = [3, 4, 5, 6]
 let A = new Set(a)
 let B = new Set(b)
 
-let c = a.filter((num) => !B.has(num))
+let c = a.filter((num) => !B.has(num)) //A.difference(B)
 let C = new Set(c)
 
 console.log(C)
@@ -278,6 +278,52 @@ console.log(C)
 ```sh
 Set(2) {1, 2}
 ```
+
+### Symetric Difference of sets
+
+To find an the symetric difference between two sets can be achieved using symmetricDifference.
+
+```js
+const evens = new Set([2, 4, 6, 8]);
+const squares = new Set([1, 4, 9]);
+console.log(evens.symmetricDifference(squares))
+```
+
+```sh
+Set(2) { 2, 6, 8, 1, 9 }
+```
+Similarlly, we have keys, values and entries which works similar to as objects. Also we can use for of loop, functional programming using forEach and map.
+```js
+const set = new Set(["foo", 63, undefined]);
+
+console.log("=======keys, values=========")
+const values = set.values();
+const keys = set.keys();
+
+console.log(keys)
+console.log(values)
+
+console.log("=======iterator=========")
+for (const entry of set.entries()) {
+  console.log(entry);
+}
+
+//for of
+console.log("=======for of=========")
+for (const item of set) {
+  console.log(item);
+}
+
+
+//forEach
+console.log("=======forEach=========")
+function logSetElements(value1, value2, set) {
+  console.log(`s[${value1}] = ${value2}`, set);
+}
+
+set.forEach(logSetElements);
+```
+
 
 ## Map
 
@@ -313,7 +359,11 @@ Map(3) {"Finland" => "Helsinki", "Sweden" => "Stockholm", "Norway" => "Oslo"}
 ### Adding values to the Map
 
 ```js
-const countriesMap = new Map()
+const countriesMap = new Map() 
+// new Map([['Finland', 'Helsinki']])
+//or
+// new Map(Object.entries({'Finland': 'Helsinki'}))
+
 console.log(countriesMap.size) // 0
 countriesMap.set('Finland', 'Helsinki')
 countriesMap.set('Sweden', 'Stockholm')
