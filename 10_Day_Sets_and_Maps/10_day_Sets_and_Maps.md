@@ -387,6 +387,21 @@ console.log(countriesMap.get('Finland'))
 Helsinki
 ```
 
+### Deleting a value from Map
+
+```js
+const map = new Map();
+map.set("bar", "foo");
+map.set("bar1", "foo1");
+map.delete("bar")
+console.log(map);
+
+```
+
+```sh
+Map(1) { 'bar1' => 'foo1' }
+```
+
 ### Checking key in Map
 
 Check if a key exists in a map using _has_ method. It returns _true_ or _false_.
