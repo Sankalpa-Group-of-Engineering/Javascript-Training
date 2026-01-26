@@ -1,13 +1,24 @@
+// Promise
+const doPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const skills = ['HTML', 'CSS', 'JS']
+    if (skills.includes('Node')) {
+      resolve('fullstack developer')
+    } else {
+      reject('not fullstack developer')
+    }
+  }, 2000)
+})
 
-const url = 'https://fake-json-api.mock.beeceptor.com/companies'
-const fetchData = async () => {
+//1. make wrapper function => async
+//2. use try and catch
+//3. call promise using await and store value in variable
+
+const checkFullStack = async () => { //wrapper function
   try {
-    const response = await fetch(url)
-    const countries = await response.json()
-    console.log(countries)
-  } catch (err) {
-    console.error(err)
+    const result = await doPromise 
+    console.log(result)
+  } catch (error) {
+    console.error(error)
   }
 }
-console.log('===== async and await')
-fetchData()
